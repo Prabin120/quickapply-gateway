@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/theme/ThemeToggle';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -38,7 +39,7 @@ const Navbar = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out-expo ${
-        isScrolled ? 'py-3 bg-white/80 backdrop-blur-md shadow-sm' : 'py-5 bg-transparent'
+        isScrolled ? 'py-3 bg-background/80 backdrop-blur-md shadow-sm border-b border-border' : 'py-5 bg-transparent'
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
@@ -74,6 +75,7 @@ const Navbar = () => {
             ))}
           </ul>
           <div className="flex items-center space-x-3">
+            <ThemeToggle />
             <Button variant="outline" size="sm">
               Log in
             </Button>
@@ -82,17 +84,19 @@ const Navbar = () => {
         </nav>
 
         {/* Mobile Menu Button */}
-        <button
-          className="md:hidden"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-        >
-          {isMobileMenuOpen ? (
-            <X className="h-6 w-6 text-foreground" />
-          ) : (
-            <Menu className="h-6 w-6 text-foreground" />
-          )}
-        </button>
+        <div className="flex items-center space-x-2 md:hidden">
+          <ThemeToggle />
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6 text-foreground" />
+            ) : (
+              <Menu className="h-6 w-6 text-foreground" />
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}

@@ -41,7 +41,7 @@ const StatCard = ({
         <div className="flex items-center mt-4">
           <div className={cn(
             "flex items-center gap-1 text-xs font-medium",
-            trend.isPositive ? "text-green-600" : "text-red-600"
+            trend.isPositive ? "text-green-600 dark:text-green-500" : "text-red-600 dark:text-red-500"
           )}>
             {trend.isPositive ? (
               <ArrowUpIcon className="h-3 w-3" />
